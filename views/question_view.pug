@@ -1,0 +1,52 @@
+extends layout
+
+block content 
+    h3 Question 
+    h1.spacer.qn-highlight #{instance.question} 
+
+    .stat-container.flex  
+        .stat
+            p Asked by 
+            p.sec #{instance.askedBy}
+        .stat
+            p answers
+            p.sec  #{instance.answerCount} 
+        .stat
+            p Posted On
+            p.date.sec= moment(instance.createdAt).format('MMMM Do, YYYY')
+
+    -var sameUser = user.nickname === instance.askedBy
+    -var hasReplied = false
+
+    each ans in answerData 
+        if ans.answeredBy === user.nickname
+            -hasReplied = true 
+            -break
+
+    -var showReview = true
+    .answers 
+        h3 Answers
+        if instance.answerCount == 0
+            p.red No answers yet
+        include ./partials/answer_list
+
+    .answer-form
+        if !sameUser && !hasReplied
+            .reply 
+                h3.qn-highlight Know the answer ? Answer here
+                form(action="/answer/"+instance._id method="post")
+                    .form-grp
+                        .form-feild-f
+                            h4 please write the answer below
+                            textarea(name="answer")
+                    button(type='submit') Submit Answer 
+            h3.or OR
+            .reply-file
+                form(action="/answer/"+instance._id method="post" enctype="multipart/form-data")
+                    input(type="file", name="answerFile")
+                    button(type='submit') Submit File
+
+
+    if isAdmin 
+        form(action="/question/"+instance._id+'/delete' method="post")#deleteForm
+            button(type='submit')#danger-btn Delete this question

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+  .my-qn 
+    h2 My Questions
+    include ./partials/question_list
+    if data.length == 0
+      p.red You haven't asked any questions yet.
+    
+    

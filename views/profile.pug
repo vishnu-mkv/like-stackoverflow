@@ -1,0 +1,10 @@
+extends layout 
+
+block content
+    form(action="/profile/"+profile.nickname, method="post" enctype="multipart/form-data") 
+        p Name 
+        input(type="text", name="username", value=profile.username)
+        p Profile picture 
+        a(href=profile.picture)= profile.picture 
+        input(type="file", name="profileimage")
+        button(type='submit') Update Profile 

@@ -1,0 +1,54 @@
+.answer-flex
+    each ans in answerData
+        div(id=ans._id).answer-container
+            if ans.file 
+                a.ans-highlight(href=ans.answer target='_blank')= ans.answer
+            else
+                p.ans-highlight= ans.answer
+            
+            .stat-container.flex
+                .stat
+                    p Answered by 
+                    p.sec #{ans.answeredBy}
+                .stat
+                    p Answered on 
+                    p.date.sec= moment(ans.createdAt).format('MMMM Do, YYYY')
+
+            div.review
+                h3 Review
+                if showReview && ans.rated
+                    .stat-container.flex
+                        .stat
+                            p Rating 
+                            p.sec #{ans.rating}
+                        .stat
+                            p Comment
+                            p.sec= ans.comment
+                else 
+                    p.red No review yet
+
+            if sameUser
+                if !ans.rated
+                    div.rateForm
+                        button.link.review-link-toggle Rate the answer
+                        form(action="/answer/"+ans._id+'/review' method="post")#reviewForm.hidden
+                            p Your rating 
+                            input(type="number", name="rating")
+                            p Comment
+                            textarea(name="comment")
+                            button(type='submit') Submit rating 
+                        
+                else 
+                    .updateRatingForm
+                        button.link.review-link-toggle Edit your review 
+                        form(action="/answer/"+ans._id+'/review' method="post")#reviewForm.hidden
+                            .form-grp
+                                .form-field
+                                    p Your rating 
+                                    input(type="number", name="rating" value=ans.rating)
+                                .form-field
+                                    p Comment
+                                    textarea(name="comment") #{ans.comment}
+                            button(type='submit') Update rating
+
+            

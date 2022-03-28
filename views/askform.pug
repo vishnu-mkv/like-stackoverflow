@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+    h3.qn-highlight Ask a Question
+    form(action="/ask" method="POST") 
+        p  What's your question?
+        textarea(name="question") 
+        div
+            button(type='submit') Submit

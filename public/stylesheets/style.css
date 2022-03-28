@@ -1,0 +1,187 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100%;
+  --font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: var(--font);
+  overflow-x: hidden;
+  --primary: #00B7FF;
+  --secondary: rgb(7, 124, 46);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.profile img {
+  aspect-ratio: 1;
+  width: 2.2em;
+  border-radius: 50%;
+}
+
+.hidden {
+  display: none;
+}
+
+.width-control {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 0.5em 1em;
+}
+
+#nav-wrapper {
+  background-color: var(--primary);
+}
+
+#nav-wrapper a {
+  color: white;
+}
+
+nav h1 a {
+  font-size: 1.1rem;
+}
+
+.flex {
+  display: flex;
+  gap: 0.5em;
+  place-items: center;
+}
+
+.nav-right, .actions {
+  gap: 1.2em;
+}
+
+nav {
+  justify-content: space-between;
+}
+
+.actions a {
+  text-transform: capitalize;
+}
+
+.qn-bottom {
+  justify-content: space-between;
+}
+
+.qn-container {
+  display: grid;
+  grid-template-rows: auto 2em 2em;
+  color: black;
+  gap: 0.7em;
+  width: 17.5em;
+  padding: 1em;
+  background-color: rgb(232, 249, 250);
+}
+
+.highlight {
+  color: var(--primary);
+  text-align: center; 
+  margin-block: 0.3em;
+}
+
+.question-flex {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  margin-block: 3em;
+}
+
+.askedby {
+  font-weight: 600;
+}
+
+.stat-container {
+  justify-content: space-between;
+  gap: 1em;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.stat {
+  width: 24em;
+}
+
+.sec {
+  color: var(--secondary);
+}
+
+.qn-highlight {
+  color: var(--primary);
+}
+
+.answer-container {
+  display: grid;
+  background-color: rgb(245, 245, 245);
+  padding: 1em 0.5em;
+}
+
+.ans-highlight {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-block: 0.5em;
+}
+
+button {
+  padding: 0.4em 0.8em;
+  border: none;
+  background-color: var(--primary);
+  display: block;
+  color: white;
+  border-radius: 0.3em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-block: 1em;
+}
+
+input, textarea {
+  padding: 0.3em;
+  font: var(--font);
+  background-color: rgb(233, 233, 233);
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.form-grp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: space-between;
+}
+
+.form-field {
+  width: 24em;
+}
+
+.form-feild-f{
+   width: 100%;
+}
+
+form {
+  margin-block: 1em;
+}
+
+.red {
+  color: red;
+}
+
+.answer-form {
+  margin-block: 3em;
+}
+
+.or {
+  text-align: center;
+}
+
+#danger-btn {
+  background-color: red;
+}
+
+.spacer {
+  margin-block: 1.5em;
+}

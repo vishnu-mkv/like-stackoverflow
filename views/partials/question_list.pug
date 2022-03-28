@@ -1,0 +1,8 @@
+.question-flex.flex
+    each qn in data
+        a(href="/question/"+qn._id).qn-container 
+            h3.highlight #{qn.question} 
+            p.askedby Asked by #{qn.askedBy}
+            .qn-bottom.flex
+                p #{qn.answerCount} answers
+                span.date= moment(qn.createdAt).format('MMMM Do, YYYY')
