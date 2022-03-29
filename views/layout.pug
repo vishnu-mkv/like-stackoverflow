@@ -7,7 +7,8 @@ html
   body
     #nav-wrapper
       nav.width-control.flex
-        div.nav-left
+        div.nav-left.flex
+          img(src="/images/menu.png", alt="alt")#menu-icon.hidden
           h1 
             a(href="/")  UnderFlow 
 
@@ -18,7 +19,10 @@ html
             a(href="/ask") ask a question 
             a(href='/questions') view all questions
           a(href="/logout") Logout 
-          div.profile.flex
+          div.profile.flex.hide-sm
+            a(href="/profile")= profileName
+            img(src= profilePicture, alt="")
+        div.profile.hidden.profile2
             a(href="/profile")= profileName
             img(src= profilePicture, alt="")
     .width-control

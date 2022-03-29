@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 body {
   margin: 0;
   width: 100vw;
   height: 100%;
-  --font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  --font: 14px "Poppins", sans-serif;
   font: var(--font);
   overflow-x: hidden;
   --primary: #00B7FF;
@@ -73,9 +75,10 @@ nav {
   grid-template-rows: auto 2em 2em;
   color: black;
   gap: 0.7em;
-  width: 17.5em;
+  width: calc(33% - 1.4em);
   padding: 1em;
   background-color: rgb(232, 249, 250);
+  min-width: 18em;
 }
 
 .highlight {
@@ -103,7 +106,7 @@ nav {
 }
 
 .stat {
-  width: 24em;
+  width: calc(50%-1em);
 }
 
 .sec {
@@ -192,4 +195,61 @@ tr {
 
 td, th {
   padding: 0.25em 0.5em;
+}
+
+
+@media screen and (max-width: 600px) {
+  .qn-container,
+  .stat {
+    width: 100%;
+  }
+
+  #menu-icon {
+    display: block;
+    aspect-ratio: 1;
+    width: 1.2em;
+    filter: invert(1);
+    cursor: pointer;
+  }
+
+  .hide-sm {
+    display: none;
+  }
+
+  .profile2 {
+    display: flex;
+    place-items: center;
+    gap: 0.7em;
+  }
+
+  nav {
+    position: relative;
+    height: 4em;
+  }
+
+  .nav-right {
+    position: fixed;
+    background-color: var(--primary);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    height: calc(100vh - 4em);
+    top: 4em;
+    gap: 2em;
+    align-items: flex-start;
+    padding-inline: 1em;
+    transform: translateX(-120vw);
+    transition: transform 0.6s;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 2em;
+    align-items: flex-start;
+  }
+
+  .nav-active {
+    transform: translateX(0);
+  }
 }
