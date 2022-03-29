@@ -241,6 +241,7 @@ td, th {
     padding-inline: 1em;
     transform: translateX(-120vw);
     transition: transform 0.6s;
+    padding-top: 1em;
   }
 
   .actions {
