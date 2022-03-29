@@ -14,5 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 #install node modules
 npm install
 
+cp /home/ec2-user/.env /home/ec2-user/express-app/.env
+
 #start our node app in the background
-node app.js > app.out.log 2> app.err.log < /dev/null & 
+npm run start > app.out.log 2> app.err.log < /dev/null & 
