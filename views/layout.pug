@@ -12,6 +12,8 @@ html
             a(href="/")  UnderFlow 
 
         div.nav-right.flex
+          if isAdmin
+            a(href='/users') Users
           .actions.flex 
             a(href="/ask") ask a question 
             a(href='/questions') view all questions
