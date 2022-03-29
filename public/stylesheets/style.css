@@ -106,7 +106,7 @@ nav {
 }
 
 .stat {
-  width: calc(50%-1em);
+  width: calc(50% - 1em);
 }
 
 .sec {
