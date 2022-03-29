@@ -4,6 +4,7 @@ const Question = require('../models/question');
 const Answer = require('../models/answer');
 const Profile = require('../models/profile');
 const { imageUpload } = require('../upload.js'); 
+const Admin = require('../models/admin');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -69,7 +70,17 @@ router.post('/answer/:id/review', function(req, res) {
   })
 })
 
-router.post('/question/:id/delete', function(req, res) {
+function adminCheck (req, res, next) {
+  Admin.find({email: req.oidc.user.email}, function(err, data) {
+    if(data.length !== 0) {
+      next();
+    }else {
+      res.json({"message": "Admin Authorization required"});
+    }
+  })
+}
+
+router.post('/question/:id/delete', adminCheck, function(req, res) {
   Question.findById(req.params.id).remove(function(data) {
     res.redirect('/questions/')
   })
@@ -96,6 +107,36 @@ router.post('/profile/:nickname', imageUpload.single('profileimage'), function(r
       res.redirect('/');
     })
 })
+
+var axios = require("axios").default;
+
+var options = {
+  method: 'GET',
+  url: process.env.ISSUER+'/api/v2/users',
+  headers: {authorization: `Bearer ${process.env.MGMI_TOKEN}`}
+};
+
+router.get('/users', adminCheck, function(req, res) {
+  axios.request(options).then(function (response) {
+    Admin.find({}, (err, adminEmails) => {
+      let admins = [];
+      for(let i=0; i<adminEmails.length; i++) {
+        admins.push(adminEmails[i].email);
+      }
+      res.render('users', {admins, 'data': response.data});
+    })
+  }).catch(function (error) {
+    console.log(error)
+  });
+})
+
+router.post('/users/makeadmin', adminCheck, function(req, res) {
+  Admin.create({email: req.body.email}, function(err, data) {
+    res.redirect('/users');
+  })
+});
+
+
 
 
 module.exports = router;

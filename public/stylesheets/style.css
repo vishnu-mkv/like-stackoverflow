@@ -185,3 +185,11 @@ form {
 .spacer {
   margin-block: 1.5em;
 }
+
+tr {
+  height: 3em;
+}
+
+td, th {
+  padding: 0.25em 0.5em;
+}

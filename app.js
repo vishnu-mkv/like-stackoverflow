@@ -8,7 +8,6 @@ var logger = require('morgan');
 const mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const Admin = require('./models/admin');
 
 var app = express();
@@ -75,7 +74,6 @@ app.use((req, res, next) => {
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 const uri = `mongodb+srv://mkv:${process.env.DB_PASSWORD}@cluster0.9kf4f.mongodb.net/tutor?retryWrites=true&w=majority`;
 mongoose.connect(uri)

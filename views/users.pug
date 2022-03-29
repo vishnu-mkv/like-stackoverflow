@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+    table 
+        tr
+            th Username
+            th Email 
+            th Role
+            th Make Admin
+        each val in data
+            tr
+                td= val.nickname 
+                td= val.email 
+                if admins.indexOf(val.email) > -1
+                    td Admin
+                    td -
+                else 
+                    td User
+                    td
+                        form(action="/users/makeadmin", method="post") 
+                            input(type="text", name="email" value=val.email).hidden
+                            button(type='submit').inline-btn Yes
