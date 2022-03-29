@@ -207,7 +207,8 @@ td, th {
   #menu-icon {
     display: block;
     aspect-ratio: 1;
-    width: 1.2em;
+    width: 1.4em;
+    margin-right: 0.5em;
     filter: invert(1);
     cursor: pointer;
   }
