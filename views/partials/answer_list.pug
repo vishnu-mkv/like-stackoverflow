@@ -2,7 +2,7 @@
     each ans in answerData
         div(id=ans._id).answer-container
             if ans.file 
-                a.ans-highlight(href=ans.answer target='_blank')= ans.answer
+                a.ans-highlight(href=ans.answer target='_blank') Click to view file
             else
                 p.ans-highlight= ans.answer
             

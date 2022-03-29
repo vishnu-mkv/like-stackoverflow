@@ -72,8 +72,9 @@ nav {
 
 .qn-container {
   display: grid;
-  grid-template-rows: auto 2em 2em;
   color: black;
+  grid-template-rows: auto 2em 2em;
+  /* flex-direction: column; */
   gap: 0.7em;
   width: calc(33% - 1.4em);
   padding: 1em;
@@ -89,9 +90,10 @@ nav {
 
 .question-flex {
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   gap: 2em;
   margin-block: 3em;
+  align-items: stretch;
 }
 
 .askedby {

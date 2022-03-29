@@ -34,17 +34,15 @@ block content
         if !sameUser && !hasReplied
             .reply 
                 h3.qn-highlight Know the answer ? Answer here
-                form(action="/answer/"+instance._id method="post")
+                form(action="/answer/"+instance._id method="post" enctype="multipart/form-data")
                     .form-grp
-                        .form-feild-f
+                        .form-feild-f#ans-field
                             h4 please write the answer below
                             textarea(name="answer")
-                    button(type='submit') Submit Answer 
-            h3.or OR
-            .reply-file
-                form(action="/answer/"+instance._id method="post" enctype="multipart/form-data")
-                    input(type="file", name="answerFile")
-                    button(type='submit') Submit File
+                    h3.or#or-text OR
+                    .reply-file
+                        input(type="file", name="answerFile" )#file-field
+                    button(type='submit') Submit
 
 
     if isAdmin 
